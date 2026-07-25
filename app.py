@@ -181,39 +181,14 @@ if analyze:
 
             resume["semantic_score"] = semantic_score
 
-            # st.metric(
-            #     "Semantic Match %",
-            #     f"{semantic_score}%"
-            #     )
-
-            # final_score = (
-            #     resume["skill_score"] * 0.4 +
-            #     resume["semantic_score"] * 0.6
-            #     )
-
-            #resume["final_score"] = round(final_score, 2)
 
             st.write("### ATS Analysis")
-
-            # st.metric(
-            #     "Skill Match",
-            #     f"{resume['skill_score']}%"
-            #     )
-
-            # st.metric(
-            #     "Semantic Match",
-            #     f"{resume['semantic_score']}%"
-            #     )
 
             resume["final_score"] = calculate_final_score(
                 resume["skill_score"],
                 resume["semantic_score"]
                 )
 
-            # st.metric(
-            #     "Final ATS Score",
-            #     f"{resume['final_score']}%"
-            #     )
             
             resumes = rank_candidates(resumes)
 
@@ -258,11 +233,9 @@ if analyze:
             else:
             
                 resume["status"] = "Not Recommended"
-                
+
 
             dashboard = []
-
-            #for resume in resumes:
 
             dashboard.append({
 
@@ -450,14 +423,7 @@ if analyze:
                     )
             except Exception:
 
-                resume["feedback"] = "Unable to generate AI feedback."    
-
-            # feedback = generate_feedback(
-            #     job_description,
-            #     resume
-            #     )
-
-            # resume["feedback"] = feedback   
+                resume["feedback"] = "Unable to generate AI feedback."       
 
             st.subheader(
                 f"AI Feedback - {resume['filename']}"
